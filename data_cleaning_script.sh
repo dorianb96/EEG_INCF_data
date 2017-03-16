@@ -1,0 +1,1 @@
+sed -i '.bak' 's/   /;/g' raw_epochs_*z.txt; sed -i '.bak' 's/  /;/g' raw_epochs_*z.txt; sed -i '.bak' 's/  //g' raw_epochs_*z.txt; sed -i '.bak' 's/^.//' raw_epochs_*z.txt
