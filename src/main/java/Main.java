@@ -1,8 +1,6 @@
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.spark.sql.DataFrame;
-import org.apache.spark.sql.SQLContext;
-
+import org.apache.commons.lang3.tuple.Pair;
 import java.util.ArrayList;
 
 /**
@@ -11,22 +9,15 @@ import java.util.ArrayList;
 public class Main
 {
 
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
 
         SparkUtil spark = new SparkUtil();
 
-        if( args.length == 0 )
-        {
-            System.out.println( "Usage: <file>" );
-            System.exit( 0 );
-        }
-
-        DataFrame dataframeCz = spark.readData("src/main/resources/raw_epochs_Cz.txt" );
-        DataFrame dataframeFz = spark.readData("src/main/resources/raw_epochs_Fz.txt" );
-        DataFrame dataframeO1 = spark.readData("src/main/resources/raw_epochs_O1.txt" );
-        DataFrame dataframePz = spark.readData("src/main/resources/raw_epochs_Pz.txt" );
-        DataFrame targets = spark.readData("src/main/resources/targets.txt" );
+        DataFrame dataframeCz = spark.readData("src/main/resources/raw_epochs_Cz.txt");
+        DataFrame dataframeFz = spark.readData("src/main/resources/raw_epochs_Fz.txt");
+        DataFrame dataframeO1 = spark.readData("src/main/resources/raw_epochs_O1.txt");
+        DataFrame dataframePz = spark.readData("src/main/resources/raw_epochs_Pz.txt");
+        DataFrame targets = spark.readData("src/main/resources/targets.txt");
 
         ArrayList<DataFrame> dataframes = new ArrayList<>(10);
         dataframes.add(dataframeCz);
@@ -35,9 +26,13 @@ public class Main
         dataframes.add(dataframeO1);
         dataframes.add(targets);
 
-        for (DataFrame d : dataframes){
-            System.out.println(d.count() +  " " + d.columns().length);
+        ArrayList<Pair<Long, Integer>> dimensions = new ArrayList<>();
+
+        for (DataFrame d : dataframes) {
+            dimensions.add(new ImmutablePair<>(d.count(), d.columns().length));
+//            System.out.println(d.count() + " " + d.columns().length);
         }
+        System.out.println(dimensions);
 
     }
 }
