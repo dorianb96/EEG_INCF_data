@@ -1,25 +1,8 @@
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.ml.Pipeline;
-import org.apache.spark.ml.PipelineModel;
-import org.apache.spark.ml.PipelineStage;
 import org.apache.spark.ml.classification.LogisticRegression;
 import org.apache.spark.ml.classification.LogisticRegressionModel;
-import org.apache.spark.ml.classification.MultilayerPerceptronClassificationModel;
-import org.apache.spark.ml.classification.MultilayerPerceptronClassifier;
-import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator;
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator;
 import org.apache.spark.ml.feature.MinMaxScaler;
-import org.apache.spark.ml.feature.MinMaxScalerModel;
-import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics;
-import org.apache.spark.mllib.regression.LabeledPoint;
 import org.apache.spark.sql.DataFrame;
-import org.apache.spark.sql.Row;
-import scala.Function1;
-import scala.Tuple2;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by dbg on 16/03/2017.
@@ -64,6 +47,7 @@ public class ML {
         float accuracy = (float) evaluator.evaluate(predictions);
 
         return accuracy;
+
     }
 
 }

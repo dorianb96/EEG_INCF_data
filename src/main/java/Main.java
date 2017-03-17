@@ -1,9 +1,3 @@
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.spark.sql.DataFrame;
-import org.apache.commons.lang3.tuple.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  * Sample Spark application that counts the words in a text file
  */
