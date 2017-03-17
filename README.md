@@ -1,4 +1,4 @@
-# Spark Machine Learning on EEG data
+# Distributed Machine Learning on EEG data using Apache Spark
 
 ### A protoype of distributed computing engine for processing of EEG data
 
